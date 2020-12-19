@@ -27,6 +27,10 @@ public class High_Score_Page extends AppCompatActivity {
 
         Log.i("Insert: ", "Inserting ..");
         //adding one high score for testing
+        db.addHighScore(new HighScore("20 NOV 2020", "Bob", 18));
+        db.addHighScore(new HighScore("22 NOV 2020", "Gemma", 22));
+        db.addHighScore(new HighScore("30 NOV 2020", "Joe", 30));
+        db.addHighScore(new HighScore("01 DEC 2020", "DarthV", 22));
         db.addHighScore(new HighScore("02 DEC 2020", "Gandalf the great", 132));
 
         // Reading all scores
