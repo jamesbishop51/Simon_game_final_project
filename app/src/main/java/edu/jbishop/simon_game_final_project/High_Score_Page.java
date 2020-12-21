@@ -3,17 +3,23 @@ package edu.jbishop.simon_game_final_project;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
 public class High_Score_Page extends AppCompatActivity {
 
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
 
     ListView listView;
     @Override
@@ -21,20 +27,31 @@ public class High_Score_Page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_high__score__page);
         listView = findViewById(R.id.listview_highscores);
-
-
+        Date today = Calendar.getInstance().getTime();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
+        String date = formatter.format(today);
+        sharedPreferences = getSharedPreferences("score_ref", MODE_PRIVATE);
+        editor = sharedPreferences.edit();
         DatabaseHandler db = new DatabaseHandler(this);
 
-        db.emptyHighScores();     // empty table if required
+       //db.emptyHighScores();     // empty table if required
 
-        Log.i("Insert: ", "Inserting ..");
+        int s = sharedPreferences.getInt("score", 0);
+
+
+            db.addHighScore(new HighScore(date, sharedPreferences.getString("playerName",""),s));
+
+        editor.putString("playerName","");
+        editor.putInt("seqcount",0);
+        editor.putInt("score",0);
+        /*Log.i("Insert: ", "Inserting ..");
         //adding one high score for testing
-        db.addHighScore(new HighScore("20 NOV 2020", "Bob", 18));
-        db.addHighScore(new HighScore("22 NOV 2020", "Gemma", 22));
-        db.addHighScore(new HighScore("30 NOV 2020", "Joe", 30));
-        db.addHighScore(new HighScore("01 DEC 2020", "DarthV", 22));
-        db.addHighScore(new HighScore("02 DEC 2020", "Gandalf the great", 132));
+        db.addHighScore(new HighScore("20 NOV 2020", "Bob", 2));
+        db.addHighScore(new HighScore("22 NOV 2020", "Gemma", 6));
+        db.addHighScore(new HighScore("30 NOV 2020", "Joe", 4));
 
+        db.addHighScore(new HighScore("02 DEC 2020", "Gandalf the great", 132));
+        db.addHighScore(new HighScore("01 DEC 2020", "DarthV", 50));*/
         // Reading all scores
         Log.i("Reading: ", "Reading all scores..");
         List<HighScore> highScores = db.getAllHighScores();
@@ -74,16 +91,16 @@ public class High_Score_Page extends AppCompatActivity {
         }
         Log.i("divider", "====================");
 
-        HighScore highScore = top5HighScores.get(top5HighScores.size() - 1);
+        //HighScore highScore = top5HighScores.get(top5HighScores.size() - 1);
         // highScore contains the 5th highest score
-        Log.i("fifth Highest score: ", String.valueOf(highScore.getScore()) );
+        //Log.i("fifth Highest score: ", String.valueOf(highScore.getScore()) );
 
         // simple test to add a hi score
         int myCurrentScore = 40;
         // if 5th highest score < myCurrentScore, then insert new score
-        if (highScore.getScore() < myCurrentScore) {
+        /*if (highScore.getScore() < myCurrentScore) {
             db.addHighScore(new HighScore("08 DEC 2020", "Elrond", 40));
-        }
+        }*/
 
         Log.i("divider", "====================");
 

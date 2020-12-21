@@ -43,7 +43,8 @@ public class play_page extends AppCompatActivity {
         btnRed = findViewById(R.id.btnRed);
         btnGreen = findViewById(R.id.btnGreen);
         btnYellow = findViewById(R.id.btnYellow);
-        preferences=PreferenceManager.getDefaultSharedPreferences(play_page.this);
+
+        preferences = getSharedPreferences("score_ref", MODE_PRIVATE);
         editor=preferences.edit();
 
         clickedSequence=new ArrayList<>();
@@ -108,7 +109,7 @@ public class play_page extends AppCompatActivity {
                     }
                     else {
 
-                        Intent intent = new Intent(play_page.this, High_Score_Page.class);
+                        Intent intent = new Intent(play_page.this, game_over_page.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
@@ -143,7 +144,7 @@ public class play_page extends AppCompatActivity {
                     }
                     else {
 
-                        Intent intent = new Intent(play_page.this, High_Score_Page.class);
+                        Intent intent = new Intent(play_page.this, game_over_page.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
@@ -178,7 +179,7 @@ public class play_page extends AppCompatActivity {
                     }
                     else {
 
-                        Intent intent = new Intent(play_page.this, High_Score_Page.class);
+                        Intent intent = new Intent(play_page.this, game_over_page.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);

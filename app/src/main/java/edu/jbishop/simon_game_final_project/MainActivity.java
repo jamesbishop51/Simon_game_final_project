@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         };
-        preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+        preferences = getSharedPreferences("score_ref", MODE_PRIVATE);
         editor = preferences.edit();
         gameSequence=new ArrayList<>();
 
