@@ -23,6 +23,7 @@
         android:id="@+id/listview_highscores"
         android:layout_width="376dp"
         android:layout_height="304dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.045"
@@ -31,10 +32,12 @@
         app:layout_constraintVertical_bias="0.579" />
 
     <Button
+        android:id="@+id/replay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Play Again"
         android:textSize="20dp"
+        android:onClick="doReplay"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.521"

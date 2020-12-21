@@ -2,8 +2,10 @@ package edu.jbishop.simon_game_final_project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -120,4 +122,8 @@ public class High_Score_Page extends AppCompatActivity {
     }
 
 
+    public void doReplay(View view) {
+        Intent i = new Intent(High_Score_Page.this, MainActivity.class);
+        startActivity(i);
     }
+}
