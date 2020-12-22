@@ -34,7 +34,7 @@ public class High_Score_Page extends AppCompatActivity {
         editor = sharedPreferences.edit();
         DatabaseHandler db = new DatabaseHandler(this);
 
-       //db.emptyHighScores();     // empty table if required
+       db.emptyHighScores();     // empty table if required
 
         int s = sharedPreferences.getInt("score", 0);
 
@@ -44,14 +44,14 @@ public class High_Score_Page extends AppCompatActivity {
         editor.putString("playerName","");
         editor.putInt("seqcount",0);
         editor.putInt("score",0);
-        /*Log.i("Insert: ", "Inserting ..");
+        Log.i("Insert: ", "Inserting ..");
         //adding one high score for testing
-        db.addHighScore(new HighScore("20 NOV 2020", "Bob", 2));
-        db.addHighScore(new HighScore("22 NOV 2020", "Gemma", 6));
-        db.addHighScore(new HighScore("30 NOV 2020", "Joe", 4));
+        db.addHighScore(new HighScore("20 NOV 2020", "Bob", 20));
+        db.addHighScore(new HighScore("22 NOV 2020", "Gemma", 60));
+        db.addHighScore(new HighScore("30 NOV 2020", "elon musk", 420));
 
         db.addHighScore(new HighScore("02 DEC 2020", "Gandalf the great", 132));
-        db.addHighScore(new HighScore("01 DEC 2020", "DarthV", 50));*/
+        db.addHighScore(new HighScore("01 DEC 2020", "DarthV", 50));
         // Reading all scores
         Log.i("Reading: ", "Reading all scores..");
         List<HighScore> highScores = db.getAllHighScores();
